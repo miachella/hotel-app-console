@@ -1,23 +1,34 @@
 const request = require('request');
 
-function listerClients(callbackOK, callbackKO) {
+class Service {
+
+static listerClients(callbackOK, callbackKO) {
+
+  return new Promise((resolve, reject) => {
+
     request('http://localhost:8080/clients?start=0&size=10', { json: true }, (err, res, body) => {
-        if (err) { callbackKO(err); }
-        else { callbackOK(body);}
-});
+        if (err) { reject(err); }
+        else { resolve(body);}
+  });
+  });
 }
 
-function ajouterClient(saisieNom, saisiePrenom, callbackOK, callbackKO) {
+
+static ajouterClient(saisieNom, saisiePrenom, callbackOK, callbackKO) {
+
+  return new Promise((resolve, reject) => {
     request.post({
         url:     'http://localhost:8080/clients',
         method: 'POST',
         json: {nom: `${saisieNom}`, prenoms: `${saisiePrenom}`}
       }, (err, res, body) => {
-        if (err) { callbackKO(err); }
-        else { callbackOK(body);}
+        if (err) { reject(err); }
+        else { resolve(body);}
       });
+    });
+}
+
 }
 
 
-exports.listerClients = listerClients;
-exports.ajouterClient = ajouterClient;
+exports.Service = Service;

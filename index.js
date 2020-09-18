@@ -1,7 +1,10 @@
-const presentation = require('./presentation');
+//const pres = require('./presentation');
+const {Presentation} = require('./presentation');
 console.log('** Administration Hotel **');
 
-    presentation.demarrer();
+
+    const presentation = new Presentation();
+    presentation.start();
     
 
 
