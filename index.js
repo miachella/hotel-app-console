@@ -1,4 +1,4 @@
-var presentation = require('./presentation');
+const presentation = require('./presentation');
 console.log('** Administration Hotel **');
 
     presentation.demarrer();
