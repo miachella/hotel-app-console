@@ -1,5 +1,6 @@
 //const request = require('request');
 import request from 'request';
+import {Client} from './domains';
 
 export class Service {
 
